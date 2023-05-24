@@ -172,7 +172,8 @@ class SignInScreen extends StatelessWidget {
               email: emailController.text.trim(),
               password: passwordController.text.trim(),
             );
-            if (credential.user.isDefinedAndNotNull) {
+            if (credential.user.isNull) {
+            } else {
               showSnackBar(context, Icons.done, Colors.greenAccent,
                   "No user found for that email.", Colors.greenAccent);
               Navigator.pushNamed(context, '/bottomNavigation');

@@ -221,19 +221,17 @@ class SignUpScreen extends StatelessWidget {
               email: emailController.text.trim(),
               password: passwordController.text.trim(),
             );
-            if (credential.user.isDefinedAndNotNull) {
-              DatabaseReference ref = FirebaseDatabase.instance
-                  .ref("Users/${credential.user?.uid}");
-              await ref.set({
-                "email": emailController.text.trim(),
-                "fullName": nameController.text.trim(),
-                "phoneNumber": phoneController.text.trim(),
-                "password": passwordController.text.trim(),
-              });
-              showSnackBar(context, Icons.done, Colors.greenAccent,
-                  "No user found for that email.", Colors.greenAccent);
-              Navigator.pushNamed(context, '/signin');
-            }
+            DatabaseReference ref =
+                FirebaseDatabase.instance.ref("Users/${credential.user?.uid}");
+            await ref.set({
+              "email": emailController.text.trim(),
+              "fullName": nameController.text.trim(),
+              "phoneNumber": phoneController.text.trim(),
+              "password": passwordController.text.trim(),
+            });
+            showSnackBar(context, Icons.done, Colors.greenAccent,
+                "No user found for that email.", Colors.greenAccent);
+            Navigator.pushNamed(context, '/signin');
           } on FirebaseAuthException catch (e) {
             if (e.code == 'user-not-found') {
               showSnackBar(context, Icons.cancel_outlined, Colors.red,
