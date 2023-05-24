@@ -276,8 +276,8 @@ class _PackageDetailState extends State<PackageDetail> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              children: const [
+                            const Row(
+                              children: [
                                 Icon(
                                   Icons.location_on,
                                   size: 20,
@@ -418,8 +418,8 @@ class _PackageDetailState extends State<PackageDetail> {
                         "17 dec - 20 dec",
                         style: medium14primary,
                       ),
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Icon(
                             Icons.location_on,
                             size: 18,
@@ -553,9 +553,9 @@ class _PackageDetailState extends State<PackageDetail> {
                       ],
                     ),
                     height5Space,
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Icon(
                           Icons.access_time,
                           size: 14,

@@ -30,7 +30,7 @@ class _OnboaringScreenState extends State<OnboaringScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: fixPadding * 2),
+                padding: const EdgeInsets.symmetric(horizontal: fixPadding * 2),
                 child: Text(
                   getTranslate(context, 'onboarding.find_destination'),
                   style: bold20white,

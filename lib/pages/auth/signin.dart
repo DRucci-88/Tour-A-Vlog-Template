@@ -1,11 +1,12 @@
 // ignore_for_file: must_be_immutable
 
 import 'dart:io';
+import 'dart:js_interop';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:touravelog/localization/localization_const.dart';
 import 'package:touravelog/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class SignInScreen extends StatelessWidget {
   TextEditingController emailController = TextEditingController();
 
   DateTime? backpressTime;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -85,9 +87,9 @@ class SignInScreen extends StatelessWidget {
         heightSpace,
         heightSpace,
         orText(context),
-        heightSpace,
-        heightSpace,
-        socialButtons(size),
+        // heightSpace,
+        // heightSpace,
+        // socialButtons(size),
         heightSpace,
         heightSpace,
         continueText(context)
@@ -161,8 +163,33 @@ class SignInScreen extends StatelessWidget {
 
   arrowButton(Size size, context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, '/signup');
+      onTap: () async {
+        if (emailController.text.trim() != '' &&
+            passwordController.text.trim() != '') {
+          try {
+            final credential =
+                await FirebaseAuth.instance.signInWithEmailAndPassword(
+              email: emailController.text.trim(),
+              password: passwordController.text.trim(),
+            );
+            if (credential.user.isDefinedAndNotNull) {
+              showSnackBar(context, Icons.done, Colors.greenAccent,
+                  "No user found for that email.", Colors.greenAccent);
+              Navigator.pushNamed(context, '/bottomNavigation');
+            }
+          } on FirebaseAuthException catch (e) {
+            if (e.code == 'user-not-found') {
+              showSnackBar(context, Icons.cancel_outlined, Colors.red,
+                  "No user found for that email.", Colors.red);
+            } else if (e.code == 'wrong-password') {
+              showSnackBar(context, Icons.cancel_outlined, Colors.red,
+                  "Wrong password provided for that user.", Colors.red);
+            }
+          }
+        } else {
+          showSnackBar(context, Icons.cancel_outlined, Colors.red,
+              "There is empty field!", Colors.red);
+        }
       },
       child: Container(
         height: size.height * 0.1,
@@ -182,6 +209,38 @@ class SignInScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void showSnackBar(BuildContext context, IconData? icon, Color? iconColor,
+      String? message, Color? messageColor) {
+    ScaffoldMessenger.of(context)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: Row(
+            children: [
+              Icon(
+                icon,
+                color: iconColor,
+              ),
+              const SizedBox(
+                width: 10.0,
+              ),
+              Flexible(
+                child: Text(
+                  message!,
+                  style: TextStyle(
+                    color: messageColor!,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: true,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
   }
 
   imageContainer(Size size) {

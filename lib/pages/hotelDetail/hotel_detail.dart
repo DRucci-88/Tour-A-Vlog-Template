@@ -336,8 +336,8 @@ class _HotelDetailState extends State<HotelDetail> {
             getTranslate(context, 'hotel_detail.location'),
             style: semibold16black,
           ),
-          Row(
-            children: const [
+          const Row(
+            children: [
               Icon(
                 Icons.location_on,
                 size: 22,

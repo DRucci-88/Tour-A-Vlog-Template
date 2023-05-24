@@ -203,9 +203,9 @@ class _PlaceDetailState extends State<PlaceDetail> {
                       ),
                     ),
                     widthSpace,
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           "Jeni patel",
                           style: semibold16black,

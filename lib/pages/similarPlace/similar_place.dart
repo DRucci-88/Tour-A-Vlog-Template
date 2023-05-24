@@ -199,9 +199,9 @@ class _SimilarPlaceState extends State<SimilarPlace> {
                       ),
                     ),
                     widthSpace,
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           "Jeni patel",
                           style: semibold16black,

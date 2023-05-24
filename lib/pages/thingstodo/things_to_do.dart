@@ -659,9 +659,9 @@ class _ThingsToDoState extends State<ThingsToDo> {
                 ],
               ),
               height5Space,
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Icon(
                     Icons.access_time,
                     size: 14,
@@ -925,8 +925,8 @@ class _ThingsToDoState extends State<ThingsToDo> {
                                 "\$56${getTranslate(context, 'things_to_do.per_night')}",
                                 style: medium16primary,
                               ),
-                              Row(
-                                children: const [
+                              const Row(
+                                children: [
                                   Icon(
                                     Icons.location_on,
                                     size: 18,

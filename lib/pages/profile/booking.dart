@@ -454,8 +454,8 @@ class _BookingScreenState extends State<BookingScreen> {
                     "\$56${getTranslate(context, 'booking.per_night')}",
                     style: regular16black,
                   ),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Icon(
                         Icons.location_on,
                         size: 18,
@@ -592,9 +592,9 @@ class _BookingScreenState extends State<BookingScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 Text(
                   "Air India",
                   style: semibold16black,
@@ -647,9 +647,9 @@ class _BookingScreenState extends State<BookingScreen> {
                         ],
                       ),
                       height5Space,
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Icon(
                             Icons.access_time,
                             size: 14,

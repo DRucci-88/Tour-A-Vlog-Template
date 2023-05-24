@@ -194,8 +194,8 @@ class _SelectFlightsState extends State<SelectFlights>
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  children: const [
+                const Column(
+                  children: [
                     Text(
                       "11.45",
                       style: semibold14black,
@@ -232,9 +232,9 @@ class _SelectFlightsState extends State<SelectFlights>
                         ],
                       ),
                       height5Space,
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Icon(
                             Icons.access_time,
                             size: 14,
@@ -251,8 +251,8 @@ class _SelectFlightsState extends State<SelectFlights>
                   ),
                 ),
                 width5Space,
-                Column(
-                  children: const [
+                const Column(
+                  children: [
                     Text(
                       "23.45",
                       style: semibold14black,

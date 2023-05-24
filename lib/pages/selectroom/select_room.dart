@@ -130,11 +130,11 @@ class _SelectRoomState extends State<SelectRoom> {
                             ),
                           ],
                         ),
-                        Row(
+                        const Row(
                           children: [
                             Expanded(
                               child: Row(
-                                children: const [
+                                children: [
                                   Icon(
                                     Icons.aspect_ratio,
                                     size: 14,
@@ -150,7 +150,7 @@ class _SelectRoomState extends State<SelectRoom> {
                             ),
                             Expanded(
                               child: Row(
-                                children: const [
+                                children: [
                                   Icon(
                                     Icons.bed,
                                     size: 14,

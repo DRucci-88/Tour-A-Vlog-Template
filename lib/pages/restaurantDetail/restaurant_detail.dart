@@ -345,8 +345,8 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
             style: semibold16black,
           ),
           height5Space,
-          Row(
-            children: const [
+          const Row(
+            children: [
               Icon(
                 Icons.location_on_outlined,
                 color: grey94Color,

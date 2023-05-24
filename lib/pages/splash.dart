@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:touravelog/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -14,10 +15,19 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(
-      const Duration(seconds: 3),
-      () => Navigator.pushNamed(context, '/onboarding'),
-    );
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        Timer(
+          const Duration(seconds: 3),
+          () => Navigator.pushNamed(context, '/onboarding'),
+        );
+      } else {
+        Timer(
+          const Duration(seconds: 3),
+          () => Navigator.pushNamed(context, '/bottomNavigation'),
+        );
+      }
+    });
   }
 
   @override

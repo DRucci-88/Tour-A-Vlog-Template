@@ -196,8 +196,8 @@ class _HotelBookingHistoryState extends State<HotelBookingHistory> {
                     "\$56(${getTranslate(context, 'hotel_booking.per_night')})",
                     style: medium16primary,
                   ),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Icon(
                         Icons.location_on,
                         size: 18,
